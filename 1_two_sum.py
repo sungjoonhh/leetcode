@@ -8,11 +8,28 @@ class Solution(object):
 
 
 
+    def twoSum2(self, nums, target):
+        vals = []
+        for i in range(len(nums)):
+            if nums[i] in vals:
+                return [vals.index(nums[i]), i]
+            vals.append(target - nums[i])    
+
+
+    def BestCase(self, nums, target):
+        d = {}
+        for i, n in enumerate(nums):
+            m = target - n
+            if m in d:
+                return [d[m], i]
+            else:
+                d[n] = i
+
 def main():
     sol = Solution()
-    nums = [2,7,11,15]
+    nums = [2,11,15,7]
     target = 9
-    output = sol.twoSum(nums,target)
+    output = sol.BestCase(nums,target)
     print(output)
     # output = [0,1]
 
